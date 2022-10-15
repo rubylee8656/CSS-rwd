@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    * {
+        font-family: 'Noto Serif JP', serif;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    :root {
+        --cellmaincolor: rgb(190, 174, 146);
+        --cellsecolor: rgba(255, 235, 183, 0.9);
+        --lightcolor: rgb(255, 255, 255);
+        --celldarkcolor: rgb(31, 31, 31);
+        --cellcolor01:rgb(255, 243, 223);
+    }
+
+    .nav-wrap{
+        background-image: linear-gradient(to right, #fff 50%,var(--celldarkcolor) 50%);
+    }
+
+    .nav-content{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-content-left{
+        padding: 10px;
+        margin-left: 10px;
+    }
+
+    .nav-content-middle{
+        display: none;
+        font-weight: 700;
+        letter-spacing: .5rem;
+        color:var(--cellmaincolor);
+        padding: 5px;
+        border-bottom: 3px solid var(--cellmaincolor);
+    }
+
+    @media (min-width:888px) {
+        .nav-content-middle {
+            display: block;
+
+        }
+
+    }
+
+    .nav-content-right{
+        border: 1px solid var(--cellmaincolor);
+        padding: 10px;
+        margin-right: 10px;
+        border-radius: 30px;
+        opacity: .5;
+    }
+
+    .nav-content-right p::before{
+        width: 15px;
+        height: 15px;
+        content: "";
+        display: inline-block;
+        background: url(./img_architecture/ico_series.svg) center center no-repeat;
+        margin-right: 5px;
+    }
+
+    .nav-content-right a{
+        text-decoration: none;
+        color: var(--cellmaincolor); 
+        letter-spacing: .1rem;
+    }
+
+    .nav-content-right:hover{
+        opacity: 1;
+    }
+
+    .main-visual {
+        height: 40vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(./img_architecture/fv_visual_sp_1.jpg) center center/cover no-repeat;
+        background-size: cover;
+    }
+
+    @media screen and (min-width:768px) {
+        .main-visual {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(./img_architecture/fv_visual_sp.jpg) center center / cover no-repeat;
+            background-size: cover;
+        }
+
+    }
+
+    .main-visual-content{
+        height: 100%;
+    }
+
+    .main-text{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .text-wrap{
+        width: 80%;
+        text-align: center;
+    }
+
+    .text-wrap .p-heading-top {
+        color: var(--cellsecolor);
+        font-size: 1rem;
+        letter-spacing: .5rem;
+        /* padding-top: 50px; */
+    }
+
+    @media screen and (min-width:768px) {
+        .text-wrap .p-heading-top {
+            font-size: 1.5rem;
+        }
+
+    }
+
+    .text-wrap .p-heading-main {
+        color: var(--cellsecolor);
+        font-size: 2rem;
+        letter-spacing: .8rem;
+        line-height: 1.5;
+        padding-bottom: 50px;
+    }
+
+    @media screen and (min-width:768px) {
+        .text-wrap .p-heading-main {
+            font-size: 3rem;
+        }
+    }
+
+    .text-wrap .p-heading-bottom {
+        display: none;
+        color: #fff;
+        font-size: .8rem;
+        letter-spacing: .5rem;
+    }
+
+    @media screen and (min-width:768px) {
+        .text-wrap .p-heading-bottom {
+            display: block;
+
+        }
+
+    }
+
+    .info-btn{
+        padding-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .info-btn a {
+        display: none;
+        text-decoration: none;
+        color: var(--lightcolor);
+        background-color: var(--cellmaincolor);
+        border: 1px solid var(--cellmaincolor);
+        border-radius: 4px;
+        letter-spacing: .1rem;
+        padding: 15px;
+    }
+
+    .info-btn a:hover {
+        background-color: transparent;
+    }
+
+    @media screen and (min-width:768px) {
+        .info-btn a {
+            display: block;
+
+        }
+
+    }
+
+    .info-btn a::before {
+        content: "";
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        background-image: url(./img_architecture/ico_search_white.svg);
+        background-repeat: no-repeat;
+        margin-right: 5px;
+    }
+
+    .main_sm {
+        background-color: var(--celldarkcolor);
+        text-align: center;
+        padding-top: 50px;
+    }
+
+    @media screen and (min-width:768px) {
+        .main_sm {
+            display: none;
+        }
+    }
+
+    .main_sm_read {
+        color: #fff;
+        font-size: .8rem;
+        letter-spacing: .5rem;
+        line-height: 2rem;
+    }
+
+    .main_sm_button {
+        padding: 30px 0;
+    }
+
+    .main_sm_button a {
+        text-decoration: none;
+        color: var(--lightcolor);
+        background-color: var(--cellmaincolor);
+        border: 1px solid var(--cellmaincolor);
+        border-radius: 4px;
+        letter-spacing: .1rem;
+        padding: 14px;
+    }
+
+    .main_sm_button a:hover {
+        background-color: transparent;
+    }
+
+    .p-content {
+        background-color:var(--celldarkcolor);
+        color: #fff;
+    }
+
+    .p1-item{
+        padding-top: 30px;
+    }
+
+    .p1{
+        max-width: 1440px;
+        margin: auto;
+    }
+    @media (min-width:992px){
+        .p1{
+        min-height: 700px;
+    }
+    }
+
+    .p1-item-content{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .p1-item-wrap{
+        width: 100%;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    @media (min-width:768px){
+        .p1-item-wrap{
+        width: 50%;
+    }
+    }
+
+    .p1-main-article h2 {
+        color: var(--cellmaincolor);
+        font-size: 3rem;
+        line-height: 1.3;
+        letter-spacing: .28em;
+        margin-bottom: 20px;
+        font-weight: 700;
+        -webkit-text-stroke: 1px var(--cellmaincolor);
+        background-image: linear-gradient(135deg, transparent 35%, var(--cellmaincolor) 35%, var(--cellmaincolor) 50%, transparent 50%, transparent 85%, var(--cellmaincolor) 85%);
+        background-size: 3px 3px;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .p1-article-inner {
+        width: 70%;
+        max-width: 100%;
+        margin-left: auto;
+    }
+
+    .p1-inner-text{
+        font-size: 1rem;
+        letter-spacing: .15rem;
+        line-height: 2rem;
+        text-align: justify;
+        margin-bottom: 60px;
+    }
+
+    .p1-article-inner h3 {
+        font-size: 2rem;
+        letter-spacing: .23rem;
+        margin-bottom: 40px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .p1-article-inner h3::before {
+        content: "";
+        display: block;
+        width: 2px;
+        background: var(--cellmaincolor);
+
+    }
+
+    .p1-inner{
+        width: 100%;
+        min-height: 600px;
+        padding: 0 20px;
+        position: relative;
+    }
+
+    @media (min-width:576px){
+        .p1-inner{
+        min-height: 800px;
+    }
+    }
+
+    @media (min-width:768px){
+        .p1-inner{
+        width: 50%;
+    }
+    }
+
+    .p1-inner-img01 {
+        width: 90%;
+        position: absolute;
+        z-index: 1;
+        transform: translate(0, 10px);
+        animation: mymove 10s infinite;
+    }
+
+    @keyframes mymove {
+    0%   {top: 10px;}
+    25%  {top: 60px;}
+    50%  {top: 110px;}
+    75%  {top: 60px;}
+    100% {top: 10px;}
+    }
+
+    @media screen and (max-width:768px) {
+    .p1-inner-img01{
+        animation:none;
+    }
+    }
+
+    .p1-inner-img01 img{
+        width: 100%;
+    }
+
+    .p1-inner-img02 {
+        width: 75%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(30%, 30%);
+    }
+
+    .p1-inner-img02 img{
+        width: 100%;
+    }
+
+    .p2-item {
+        padding-top: 30px;
+    }
+
+    .p2{
+        max-width: 1440px;
+        margin: auto;
+    }
+
+    @media (min-width:992px){
+        .p2{
+        min-height: 700px;
+    }
+    }
+
+    .p2-item-content{
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
+    }
+
+    .p2-item-text-wrap{
+        width: 100%;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    @media (min-width:768px){
+        .p2-item-text-wrap{
+        width: 50%;
+    }
+    }
+    
+    .p2-article-text{
+        width: 75%;
+        font-size: 1rem;
+        letter-spacing: .15rem;
+        line-height: 2rem;
+        text-align: justify;
+        margin-bottom: 60px;
+        margin-left:auto;
+    }
+    
+    .p2-article-title{
+        margin-bottom: 60px;
+        text-align: right;
+        font-weight: 700;
+        -webkit-text-stroke: 1px var(--cellmaincolor);
+        background-image: linear-gradient(135deg, transparent 35%, var(--cellmaincolor) 35%, var(--cellmaincolor) 50%, transparent 50%, transparent 85%, var(--cellmaincolor) 85%);
+        background-size: 3px 3px;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .p2-article-title p{
+        color: var(--cellmaincolor);
+        font-size: 3rem;
+        line-height: 1.3;
+        letter-spacing: .28em;
+        text-transform: uppercase;
+    }
+    
+    .p2-article-title small {
+        color: var(--cellmaincolor);
+        font-size: 1.5rem;
+        letter-spacing: .23rem;
+    }
+
+    .p2-img-content{
+        width: 100%;
+        padding: 0 20px;
+        min-height: 600px;
+    }
+
+    @media (min-width:576px){
+        .p2-img-content{
+            min-height: 800px;
+    }
+    }
+
+    @media (min-width:768px){
+        .p2-img-content{
+        width: 50%;
+    }
+    }
+
+    .p2-img-wrap{
+        position: relative;
+        
+    }
+
+    .p2-img-wrap img{
+        width: 100%;
+    }
+
+    .p2-img-aside01 {
+        width: 95%;
+        position: absolute;
+        z-index: 1;
+        transform: translate(10px, 100px);
+        animation: mymove02 10s infinite;
+    }
+
+    @keyframes mymove02 {
+    0%   {left: 30px;}
+    25%  {left: 80px;}
+    50%  {left: 130px;}
+    75%  {left: 80px;}
+    100% {left: 30px;}
+    }
+
+    @media screen and (max-width:768px) {
+        .p2-img-aside01{
+        animation:none;
+    }
+    }
+
+    .p2-img-aside02 {
+        width: 75%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(0%,20%);
+    }
+
+    .p3-item {
+        padding-top: 30px;
+    }
+
+    @media (min-width:992px){
+        .p3{
+        min-height: 700px;
+    }
+    }
+
+    .p3{
+        max-width: 1440px;
+        margin: auto;
+    }
+
+    .p3-item-content{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .p3-item-text{
+        width: 100%;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    @media (min-width:768px){
+        .p3-item-text{
+        width: 50%;
+    }
+    }
+
+    .p3-article-text {
+        width: 75%;
+        font-size: 1rem;
+        letter-spacing: .15rem;
+        line-height: 2rem;
+        text-align: justify;
+        margin-bottom: 60px;
+        margin-left: auto;
+    }
+
+    .p3-article-title {
+        margin-bottom: 60px;
+        font-weight: 700;
+        -webkit-text-stroke: 1px var(--cellmaincolor);
+        background-image: linear-gradient(135deg, transparent 35%, var(--cellmaincolor) 35%, var(--cellmaincolor) 50%, transparent 50%, transparent 85%, var(--cellmaincolor) 85%);
+        background-size: 3px 3px;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .p3-article-title p {
+        color: var(--cellmaincolor);
+        font-size: 3rem;
+        line-height: 1.3;
+        letter-spacing: .28em;
+        text-transform: uppercase;
+    }
+
+    .p3-article-title small {
+        color: var(--cellmaincolor);
+        font-size: 1.5rem;
+        letter-spacing: .23rem;
+    }
+
+    .p3-img-content{
+        width: 100%;
+        padding: 0 20px;
+        min-height: 600px;
+    }
+
+    @media (min-width:576px){
+        .p3-img-content{
+        min-height: 800px;
+    }
+    }
+
+    @media (min-width:768px){
+        .p3-img-content{
+        width: 50%;
+    }
+    }
+
+    .p3-img-wrap{
+        position: relative;
+    }
+
+    .p3-img-wrap img{
+        width: 100%;
+    }
+    .p3-img-aside01 {
+        width: 90%;
+        position: absolute;
+        z-index: 1;
+        transform: translate( 20px, 20px);
+        animation: mymove03 10s infinite;
+    }
+
+    @keyframes mymove03 {
+    0%   {top: 20px;}
+    25%  {top: 70px;}
+    50%  {top: 120px;}
+    75%  {top: 70px;}
+    100% {top: 20px;}
+    }
+
+    @media screen and (max-width:768px) {
+        .p3-img-aside01{
+        animation:none;   
+    }
+    }
+
+    .p3-img-aside02 {
+        width: 75%;
+        position: absolute;
+        transform: translate(35%, 30%);
+    }
+
+    .p3-img-aside03 {
+        width: 50%;
+        position: absolute;
+        z-index: 2;
+        animation: mymove04 10s infinite;
+    }
+
+    @keyframes mymove04 {
+    0%   {left: 0px;}
+    25%  {left: -10px;}
+    50%  {left: -30px;}
+    75%  {left: -10px;}
+    100% {left: 0px;}
+    }
+
+    @media screen and (max-width:768px) {
+        .p3-img-aside03{
+        animation:none;   
+    }
+    }
+
+    .middle-wrap{
+        background-color: #ccc;
+    }
+    
+    .middle-text{
+        padding: 50px 0;
+        position: relative;
+    }
+
+    .middle_line_title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        letter-spacing: .3rem;
+        line-height: 1;
+        color: #5d5d5d;
+        background-color: #ccc;
+        padding: 10px 20px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .middle-line_read {
+        color: #5d5d5d;
+        font-size: 1.5rem;
+        letter-spacing: .3rem;
+        line-height: 2;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.688);
+        border-top: 8px solid rgba(255, 255, 255, 0.688);
+        border-bottom: 8px solid rgba(255, 255, 255, 0.688);
+        padding: 10px 0 ;
+        background-clip: content-box;
+    }
+
+    .release_wrap{
+        background: url(./img_architecture/top_bg01.d8cda69.png) center center no-repeat;
+    }
+
+    .release_item01_content{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    
+    .release_item01_wrap{
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    @media (min-width:768px){
+        .release_item01_wrap{
+        width: 50%;
+    }
+    }
+
+    @media (min-width:992px){
+        .release_item01_wrap{
+        width: 33.333333%;
+    }
+    }
+
+    .release_item01{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .release_item01_pic {
+        padding: 40px 0 10px 0;
+        display: flex;
+    }
+
+    .release_item01_pic_title {
+        width: 15%;
+    }
+
+    .release_item01_pic_title span {
+        color: var(--cellmaincolor);
+        writing-mode: vertical-rl;
+    }
+
+    .release_item01_img {
+        width: 85%;
+        border-radius: 0 40% 0 40%;
+        overflow: hidden;
+    }
+
+    .release_item01_img img{
+        width: 100%;
+    }
+    
+    .release_item01_img img:hover{
+        transition: .9s;
+        transform: scale(1.5);
+    }
+
+    .release_item01_inner{
+        flex-grow: 1;
+    }
+
+    .release_item01_inner_name {
+        line-height: 2;
+    }
+
+    .release_item01_inner_name p {
+        font-size: .8rem;
+        letter-spacing: .2rem;
+        color: var(--cellmaincolor);
+        background-color: var(--cellcolor01);
+    }
+
+    .release_item01_inner_detail {
+        letter-spacing: .2rem;
+        line-height: 2;
+        padding: 10% 0;
+    }
+
+    .release_item01_btn_area {
+        padding: 5% 0 20% 0;
+        text-align: center;
+    }
+
+    .release_item01_btn_area a {
+        text-decoration: none;
+        color: var(--lightcolor);
+        background-color: var(--cellmaincolor);
+        border: 1px solid var(--cellmaincolor);
+        border-radius: 30px;
+        letter-spacing: .3rem;
+        padding: 14px;
+    }
+
+    .release_item01_btn_area a:hover {
+        color: var(--cellmaincolor);
+        background-color: transparent;
+    }
+
+    .a-footer {
+        background-color: var(--celldarkcolor);
+        text-align: center;
+        padding: 20px 20px;
+    }
+
+    .footer_logo img{
+        width: 50%;
+    }
+
+    @media (min-width:768px){
+        .footer_logo img{
+        width: 25%;
+    }
+    }
+    
+    .footer_menu{
+        width: 100%;
+        display: flex;
+        padding: 10px 0;
+    }
+    .footer_menu_list {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        overflow-x: auto;
+        justify-content:space-between;
+    }
+
+    .footer_menu_list li {
+        border-right: 1px solid #7d7d7d;
+        flex-shrink: 0;
+        padding: 0 10px;
+    }
+
+    .footer_menu_list li:last-child{
+        border-right: none;
+    }
+
+    .footer_menu_list a {
+        text-decoration: none;
+        color: #7d7d7d;
+    }
+
+    .footer_menu_list a:hover{
+        color: var(--cellmaincolor);
+    }
+
+    .footer_copyright {
+        color: #777;
+    }
+
+</style>
+
+<body>
+
+    <nav>
+        <div class="nav-wrap">
+            <div class="nav-content">
+                <div class="nav-content-left">
+                    <img src="./img_architecture/logo_pe.svg" width="100" height="auto" alt="">
+                </div>        
+                <div class="nav-content-middle">
+                   <p>HEBEL MAISON PREMIUM EDITION<p>
+                </div>    
+                <div class="nav-content-right">
+                    <a href="">
+                        <p>シリーズ物件一覧</p>
+                    </a>
+                </div>
+             </div>
+        </div>
+    </nav>    
+
+    <div class="main-visual">
+        <div class="main-visual-content">
+            <div class="main-text">
+                <div class="text-wrap">
+                    <h1 class="text-center">
+                        <p class="p-heading-top">HEBEL MAISON</p>
+                        <p class="p-heading-main">
+                            PREMIUM
+                            EDITION
+                        </p>
+                        <p class="p-heading-bottom">
+                            へーベルメゾンの理想を追い求め、
+                            洗練されたデザインのプレミアム賃貸
+                        </p>
+                    </h1>
+
+                    <div class="info-btn">
+                        <a href="">プレミアムエディションのお部屋を探す</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main_sm">
+        <div class="main_sm_read">
+            <p>へーベルメゾンの理想を追い求め、
+                <br>
+                洗練されたデザインのプレミアム賃貸
+            </p>
+        </div>
+        <div class="main_sm_button">
+            <a href="">プレミアムエディションのお部屋を探す</a>
+        </div>
+    </div>
+
+    <div class="p-content">
+        <section class="p1-item">
+            <div class="p1">
+                <div class="p1-item-content">
+                    <div class="p1-item-wrap">
+                        <div class="p1-main-article">
+                            <h2>
+                                PREMIUM <br>
+                                EDITION
+                            </h2>
+                            <div class="p1-article-inner">
+                                <h3>
+                                    その存在を、誇る。
+                                </h3>
+                                <div class="p1-inner-text">
+                                    ロケーションの個性とへーベルの強みを生かした
+                                    「外観」「共用部」「インテリア」
+                                    それら3つの要素を綿密に創り込みながら、色褪せない価値を備えます。
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="p1-inner">
+                        <div class="p1-inner-img01">
+                            <img src="./img_architecture/concept_01.jpg" alt="">
+                        </div>
+                        <div class="p1-inner-img02">
+                            <img src="./img_architecture/feature_02_02.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="p2-item">
+            <div class="p2">
+                <div class="p2-item-content">
+                    <div class="p2-item-text-wrap">
+                        <div class="p2-article">
+                            <h2 class="p2-article-title">
+                                <p>Façade</p>
+                                <small>外観</small>
+                            </h2>
+                            <div class="p2-article-text">
+                                <strong>
+                                    住みたいと思える表情。<br>
+                                    住んでよかったと思える使いやすさがあります。<br><br>
+                                </strong>
+                                ずっと住み続けたくなる、そんな表情を、旭化成ならではの設計手法で描き出し、入居者の誇りとなるデザインとなっています。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p2-img-content">
+                        <div class="p2-img-wrap">
+                            <div class="p2-img-aside01">
+                                <img src="./img_architecture/feature_01_01.jpg" alt="">
+                            </div>
+                            <div class="p2-img-aside02">
+                                <img src="./img_architecture/feature_01_02.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="p3-item">
+            <div class="p3">
+                <div class="p3-item-content">
+                    <div class="p3-item-text">
+                        <div class="p3-article">
+                            <h2 class="p3-article-title">
+                                <p>
+                                    Interior <br>
+                                    Design
+                                </p>
+                                <small>インテリアデザイン</small>
+                            </h2>
+                            <div class="p3-article-text">
+                                <strong>
+                                    『住みたい、住み続けたい』という想いを育む。<br>
+                                    そんなインテリアを厳選します。
+                                    <br><br>
+                                </strong>
+                                ハイグレードな設備に、間接照明やアクセント壁の採用など、上質感と機能性を兼ね備えた空間で、ワンランク上の暮らし心地を創造します。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p3-img-content">
+                        <div class="p3-img-wrap">
+                            <div class="p3-img-aside01">
+                                <img src="./img_architecture/feature_02_03.jpg" alt="">
+                            </div>
+                            <div class="p3-img-aside02">
+                                <img src="./img_architecture/feature_03_02.jpg" alt="">
+                            </div>
+                            <div class="p3-img-aside03">
+                                <img src="./img_architecture/feature_02_01.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div>
+        <div class="middle-wrap">
+            <div class="middle-text">
+                <p class="middle_line_title">SERIES</p>
+                <p class="middle-line_read">プレミアムエディションのお部屋を探す</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="release_wrap">
+        <ul class="release_item01_content">
+            <li class="release_item01_wrap">
+                <div class="release_item01">
+                    <div class="release_item01_pic">
+                        <div class="release_item01_pic_title">
+                            <span>TAKANODAI</span>
+                        </div>
+                        <div class="release_item01_img">
+                            <img src="./img_architecture/fujisawa.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="release_item01_inner">
+                        <h3 class="release_item01_inner_name">
+                            ワイズ橘公園
+                            <p>1LDK(46.97m²)~2LDK(58.45m²)</p>
+                        </h3>
+                        <div class="release_item01_inner_detail">
+                            神奈川県藤沢市
+                            <br>
+                            東海道線「藤沢」より徒歩8分
+                        </div>
+                    </div>
+                    <div class="release_item01_btn_area">
+                        <a href="">特集ページを見る</a>
+                    </div>
+                </div>
+            </li>
+            <li class="release_item01_wrap">
+                <div class="release_item01">
+                    <div class="release_item01_pic">
+                        <div class="release_item01_pic_title">
+                            <span>ASHIYA</span>
+                        </div>
+                        <div class="release_item01_img">
+                            <img src="./img_architecture//ashiya.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="release_item01_inner">
+                        <h3 class="release_item01_inner_name">
+                            シャルーブ松ノ内
+                            <p>2LDK（55.71m²）～3LDK（87.01m²)</p>
+                        </h3>
+                        <div class="release_item01_inner_detail">
+                            兵庫県芦屋市
+                            <br>
+                            阪急神戸線「芦屋川」徒歩1分
+                        </div>
+                    </div>
+                    <div class="release_item01_btn_area">
+                        <a href="">特集ページを見る</a>
+                    </div>
+                </div>
+            </li>
+            <li class="release_item01_wrap">
+                <div class="release_item01">
+                    <div class="release_item01_pic">
+                        <div class="release_item01_pic_title">
+                            <span>OGIKUBO</span>
+                        </div>
+                        <div class="release_item01_img">
+                            <img src="./img_architecture//ogikubo.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="release_item01_inner">
+                        <h3 class="release_item01_inner_name">
+                            Maison de Luana
+                            <p>1LDK(46.97m²)~2LDK(58.45m²)</p>
+                        </h3>
+                        <div class="release_item01_inner_detail">
+                            東京都杉並区天沼
+                            <br>
+                            JR総武・中央線・「荻窪」徒歩11分
+                        </div>
+                    </div>
+                    <div class="release_item01_btn_area">
+                        <a href="">特集ページを見る</a>
+                    </div>
+                </div>
+            </li>
+            <li class="release_item01_wrap">
+                <div class="release_item01">
+                    <div class="release_item01_pic">
+                        <div class="release_item01_pic_title">
+                            <span>AMANUMA</span>
+                        </div>
+                        <div class="release_item01_img">
+                            <img src="./img_architecture/amanuma.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="release_item01_inner">
+                        <h3 class="release_item01_inner_name">
+                            EntrepÔt de la pierre
+                            <p>1LDK(46.97m²)~2LDK(58.45m²)</p>
+                        </h3>
+                        <div class="release_item01_inner_detail">
+                            東京都杉並区
+                            <br>
+                            総武・中央線「阿佐ヶ谷」徒歩17分
+                        </div>
+                    </div>
+                    <div class="release_item01_btn_area">
+                        <a href="">特集ページを見る</a>
+                    </div>
+                </div>
+            </li>
+            <li class="release_item01_wrap">
+                <div class="release_item01">
+                    <div class="release_item01_pic">
+                        <div class="release_item01_pic_title">
+                            <span>KOIGAKUBO</span>
+                        </div>
+                        <div class="release_item01_img">
+                            <img src="./img_architecture/koigakubo.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="release_item01_inner">
+                        <h3 class="release_item01_inner_name">
+                            M's Court 国分寺
+                            <p>1LDK(46.97m²)~2LDK(58.45m²)</p>
+                        </h3>
+                        <div class="release_item01_inner_detail">
+                            東京都国分寺市東恋ヶ窪
+                            <br>
+                            西武国分寺線「恋ヶ窪」徒歩11分
+                        </div>
+                    </div>
+                    <div class="release_item01_btn_area">
+                        <a href="">特集ページを見る</a>
+                    </div>
+                </div>
+            </li>
+            <li class="release_item01_wrap">
+                <div class="release_item01">
+                    <div class="release_item01_pic">
+                        <div class="release_item01_pic_title">
+                            <span>SHAKUJII</span>
+                        </div>
+                        <div class="release_item01_img">
+                            <img src="./img_architecture/shakujii.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="release_item01_inner">
+                        <h3 class="release_item01_inner_name">
+                            Soleado 石神井公園
+                            <p>1LDK(46.97m²)~2LDK(58.45m²)</p>
+                        </h3>
+                        <div class="release_item01_inner_detail">
+                            東京都練馬区石神井町
+                            <br>
+                            西武池袋線「石神井公園」徒歩8分
+                        </div>
+                    </div>
+                    <div class="release_item01_btn_area">
+                        <a href="">特集ページを見る</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <footer class="a-footer">
+        <div class="footer_logo">
+            <div>
+                <img src="./img_architecture/logo_text.svg" alt="">
+            </div>
+        </div>
+        <div class="footer_menu">
+            <ul class="footer_menu_list">
+                <li><a href="">プライバシーポリシー</a></li>
+                <li><a href="">ご利用条件</a></li>
+                <li><a href="">ソーシャルメディアポリシー</a></li>
+                <li><a href="">サイトマップ</a></li>
+                <li><a href="">宅建業法上の表示</a></li>
+                <li><a href="">お問い合わせ</a></li>
+            </ul>
+        </div>
+        <div class="footer_copyright">
+            <small>Copyright© Asahi Kasei Realty & Residence Corporation.
+                <br>
+                All rights reserved.
+            </small>
+        </div>
+    </footer>
+    
+</body>
+
+</html>
